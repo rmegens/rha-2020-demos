@@ -46,20 +46,6 @@ CMD     ["/usr/sbin/httpd","-D","FOREGROUND"]
 [root@rh8demo demo2]# podman run -d --name myweb4 -p 8080:80 localhost/rha-myweb:latest
 ```
 4. Show process in PID tree
-
-        <ul>
-            <li>show index page with Lynx</li>
-                <ul>
-                    <li>lynx http://localhost</li>
-                </ul>
-
-            <li>show running processes on host</li>
-                <ul>
-                    <li>ps aux | grep apache</li>
-                </ul>
-
-            <li>show running processes in container</li>
-                <ul>
-                    <li>podman exec -ti rha-mayweb /bin/bash</li>
-                    <li>ps aux | grep apache</li>
-                </ul>
+```text
+[root@rh8demo demo2]# ps aux | grep httpd
+```
