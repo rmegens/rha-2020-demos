@@ -16,30 +16,34 @@
                 </ul>
             <li>create an image and run the pod</li>
                 <ul>
-                    <li>oc new-app files/index.html --name my-webapp</li>
+                    <li>oc new-app httpd~http://github.com/rmegens/rha-2020-demos --context-dir=demo3/files/ --name my-webapps2i</li>
                 </ul>
         </ul>
     <h2>Next steps</h2>
         <ul>
             <li>Show running pods</li>
                 <ul>
-                    <li>oc get all</li>
+                    <li>oc get pods</li>
+                </ul>
+            <li>Create a route for the webapp</li>
+                <ul>
+                    <li>oc expose svc mywebapps2i</li>
                 </ul>
 
-            <li>show index page with Lynx</li>
+            <li>show index page with a webbrowser</li>
                 <ul>
-                    <li>lynx http://localhost</li>
+                    <li>Use your webbrowser : http://my-webapps2i-rha-demo3-test1.apps-crc.testing</li>
                 </ul>
 
             <li>show running processes on host</li>
                 <ul>
-                    <li>ps aux | grep apache</li>
+                    <li>ps aux | grep httpd</li>
                 </ul>
 
             <li>show running processes in container</li>
                 <ul>
-                    <li>oc rsh rha-mayweb</li>
-                    <li>ps aux | grep apache</li>
+                    <li>oc rsh rha-my-webapps2i</li>
+                    <li>ps aux | grep httpd</li>
                 </ul>
 
 

@@ -1,4 +1,4 @@
-# Demo 2
+# Demo 2 - Webapp in Container
 This demo runs on a simple RHEL8 VM -> rh8demo
 
 ```text

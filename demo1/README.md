@@ -1,4 +1,4 @@
-# Demo 1
+# Demo 1 - webapp on vm
 This demo runs on a simple RHEL7 VM -> flanel
 
 ```text
