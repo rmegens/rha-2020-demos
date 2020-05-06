@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome in RHA demo on May 7, 2020</title>
+</head>
+<body>
+<p>
+    <h1>This is a demo page for demo 3</h1>
+    <h2>This webpage is created by:</h2>
+        <ul>
+           <li>login to Openshift Cluster</li>
+                <ul>
+                    <li>oc login -u developer -p [my-secret-password-here] https://myclustername:6443</li>
+                    <li>oc new-project rha-may-web
+                </ul>
+            <li>create an image and run the pod</li>
+                <ul>
+                    <li>oc new-app files/index.html --name my-webapp</li>
+                </ul>
+        </ul>
+    <h2>Next steps</h2>
+        <ul>
+            <li>Show running pods</li>
+                <ul>
+                    <li>oc get all</li>
+                </ul>
+
+            <li>show index page with Lynx</li>
+                <ul>
+                    <li>lynx http://localhost</li>
+                </ul>
+
+            <li>show running processes on host</li>
+                <ul>
+                    <li>ps aux | grep apache</li>
+                </ul>
+
+            <li>show running processes in container</li>
+                <ul>
+                    <li>oc rsh rha-mayweb</li>
+                    <li>ps aux | grep apache</li>
+                </ul>
+
+
+        </ul>
+</p>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome in RHA demo on May 7, 2020</title>
+</head>
+<body>
+    <h1>This is a demo page for demo 2</h1>
+
+    <p>
+    <h2>This webpage is created by:</h2>
+        <ul>
+           <li>creating a Dockerfile</li>
+                <ul>
+                    <li>get a runtime with rhel8</li>
+                    <li>install apache2</li>
+                    <li>copy index.html to /var/www/html</li>
+                    <li>start the application</li>
+                </ul>
+            <li>create an image</li>
+                <ul>
+                    <li>podman build -t rha-may-webapp .</li>
+                </ul>
+            <li>run a container from the image</li>
+                <ul>
+                    <li>podman run -d --name rha-mayweb rha-may-webapp</li>
+                </ul>
+
+        </ul>
+    <h2>Next steps</h2>
+        <ul>
+            <li>show index page with Lynx</li>
+                <ul>
+                    <li>lynx http://localhost</li>
+                </ul>
+
+            <li>show running processes on host</li>
+                <ul>
+                    <li>ps aux | grep apache</li>
+                </ul>
+
+            <li>show running processes in container</li>
+                <ul>
+                    <li>podman exec -ti rha-mayweb /bin/bash</li>
+                    <li>ps aux | grep apache</li>
+                </ul>
+
+        </ul>
+    </p>
+</body>
+</html>
