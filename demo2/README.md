@@ -49,3 +49,7 @@ CMD     ["/usr/sbin/httpd","-D","FOREGROUND"]
 ```text
 [root@rh8demo demo2]# ps aux | grep httpd
 ```
+5. Show webapp with curl
+```text
+[root@rh8demo demo2]# curl http://localhost:8080
+```
