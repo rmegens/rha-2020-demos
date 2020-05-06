@@ -2,7 +2,7 @@
 This demo runs on a simple RHEL7 VM -> flanel
 
 ```text
-[rmegens@rmegens RHA-2020]$ ssh root@flanel
+[demo@demo RHA-2020]$ ssh root@flanel
 ```
 ## Content
 ```text

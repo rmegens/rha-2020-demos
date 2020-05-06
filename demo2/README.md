@@ -2,7 +2,7 @@
 This demo runs on a simple RHEL8 VM -> rh8demo
 
 ```text
-[rmegens@rmegens RHA-2020]$ ssh root@rh8demo
+[demo@demo RHA-2020]$ ssh root@rh8demo
 
 [root@rh8demo ~]# cd rha-2020/demo2/
 ```
