@@ -17,26 +17,49 @@ demo2/
     └── redhat.repo
 
 1 directory, 4 files
-
 ```
 
-## Set up script
-To quickly setup the webserver use
-```text
-cd ~/rha-2020/demo1
-[root@flannel demo1]# ./setup_web.sh
-```
-
-## tear down script
-To quickly uninstall the webserver
-```text
-cd ~/rha-2020/demo1
-[root@flannel demo1]# ./remove_web.sh
-```
 
 ## Demo
-Web application (the old way)
-1. Install, configure and run Apache2
-2. Create Index page (html)
-3. Show web content in Lynx
+Web application in a container on a stand-alone runtime host
+1. Create a Dockerfile
+```text
+[root@rh8demo demo2]# cat Dockerfile
+FROM quay.io/generic/centos8:latest
+MAINTAINER  Rik Megens <rmegens@redhat.com>
+
+RUN     yum clean all \
+    	&& yum install httpd -y
+
+COPY    files/index.html    /var/www/html/index.html
+RUN	    chmod 0664 /var/www/html/index.html
+
+CMD     ["/usr/sbin/httpd","-D","FOREGROUND"]
+
+```
+2. Create an image from the Dockerfile using Podman
+```text
+[root@rh8demo demo2]# podman build -t my4web .
+```
+3. Create a container from the image using podman
+```text
+[root@rh8demo demo2]# podman run -d --name myweb4 -p 8080:80 localhost/rha-myweb:latest
+```
 4. Show process in PID tree
+
+        <ul>
+            <li>show index page with Lynx</li>
+                <ul>
+                    <li>lynx http://localhost</li>
+                </ul>
+
+            <li>show running processes on host</li>
+                <ul>
+                    <li>ps aux | grep apache</li>
+                </ul>
+
+            <li>show running processes in container</li>
+                <ul>
+                    <li>podman exec -ti rha-mayweb /bin/bash</li>
+                    <li>ps aux | grep apache</li>
+                </ul>
