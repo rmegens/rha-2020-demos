@@ -36,6 +36,37 @@ cd ~/rha-2020/demo1
 ## Demo
 Web application (the old way)
 1. Install, configure and run Apache2
+```text
+# install apache2
+[root@flannel demo1]# yum install httpd -y
+
+# enable and start httpd service
+[root@flannel demo1]# systemctl enable httpd
+[root@flannel demo1]# systemctl start httpd
+
+# open firewall
+[root@flannel demo1]# firewall-cmd --add-service=http --permanent
+[root@flannel demo1]# firewall-cmd --reload
+```
 2. Create Index page (html)
-3. Show web content in Lynx
-4. Show process in PID tree
+```text
+# copy index page
+[root@flannel demo1]# cp ~/rha-2020-demos/demo1/files/index.html /var/www/html/index.html
+[root@flannel demo1]# chmod 0664 /var/www/html/index.html
+```
+3. Show web content with curl
+```text
+[root@flannel demo1]# curl http://localhost
+```
+4. Show httpd process 
+```text
+[root@flannel demo1]# ps aux | grep httpd
+```
+
+
+
+
+# show results
+systemctl status httpd
+firewall-cmd --list-all
+curl http://localhost

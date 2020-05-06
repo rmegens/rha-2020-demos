@@ -45,7 +45,7 @@ CMD     ["/usr/sbin/httpd","-D","FOREGROUND"]
 ```text
 [root@rh8demo demo2]# podman run -d --name myweb4 -p 8080:80 localhost/rha-myweb:latest
 ```
-4. Show process in PID tree
+4. Show httpd process
 ```text
 [root@rh8demo demo2]# ps aux | grep httpd
 ```
