@@ -1,24 +1,27 @@
-# Demo for RHA Webinar, May 7 2020
+= Demo for RHA Webinar, May 7 2020
 
-This demo is to showcase why understanding Linux is important 
+This demo is to showcase why understanding Linux is important
 before you can dive into containers, Kubernetes and Openshift.
 
 In this demo a very simple web-application, based on one index.html
 is deployed in three different ways.
 
-## Demo 1 - tradition webapp deployment
+== Demo 1 - tradition webapp deployment
+
 In demo 1, the web application is deployed in the traditional way on a VM.
 To replay this demo, you need a test system with RHEL7/8 or CentOS 7/8.
 
-## Demo 2 - webapp in a container on a stand-alone runtime host
+== Demo 2 - webapp in a container on a stand-alone runtime host
+
 In demo 2, the same web application is containerized using podman. An image is
 created and stored in local cache and then a container is started from this image.
-To recreate this demo, you need a test system with RHEL8/CentOS8. The container tools 
+To recreate this demo, you need a test system with RHEL8/CentOS8. The container tools
 should be installed by default. Check out this link to get your system configured:
 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/building_running_and_managing_containers/index 
 
-## Demo 3 - webapp in Openshift
-In demo 3, the webapp will be deployed in an all-in-one Openshift 4.4 cluster using 
+== Demo 3 - webapp in Openshift
+
+In demo 3, the webapp will be deployed in an all-in-one Openshift 4.4 cluster using
 CodeReadyContainer. Follow this link to download CodeReady Containers and the documentation
 on how to install on Linux, MacOS and Windows. https://developers.redhat.com/products/codeready-containers/overview
 You can find more on https://developers.redhat.com/
