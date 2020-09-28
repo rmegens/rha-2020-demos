@@ -22,7 +22,7 @@ demo2/
 
 Web application in a container on a stand-alone runtime host
 
-*1. Create a Dockerfile*
+*1. Take a look at the Dockerfile*
 
 [source,text]
 ----
