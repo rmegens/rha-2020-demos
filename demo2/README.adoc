@@ -1,16 +1,9 @@
 = Demo 2 - Webapp in Container
 
-This demo runs on a simple RHEL8 VM -&gt; rh8demo
+This demo runs on a simple RHEL8 VM
 
-[source,text]
-----
-[demo@demo RHA-2020]$ ssh root@rh8demo
 
-[root@rh8demo ~]# cd rha-2020/demo2/
-
-----
-
-== Content
+== Content of demo2
 
 [source,text]
 ----
@@ -28,7 +21,8 @@ demo2/
 == Demo
 
 Web application in a container on a stand-alone runtime host
-1. Create a Dockerfile
+
+*1. Create a Dockerfile*
 
 [source,text]
 ----
@@ -46,10 +40,63 @@ CMD     ["/usr/sbin/httpd","-D","FOREGROUND"]
 
 ----
 
-. Create an image from the Dockerfile using Podman
+*2 Create an image from the Dockerfile using Podman*
+[source, text]
+----
+[root@rh8demo demo2]# podman build -t rha-myweb:latest .
+----
 
-. Create a container from the image using podman
+*3 Create a container from the image using podman*
+[source, text]
+----
+[root@rh8demo demo2]# podman run -d --name myweb rha-myweb
+----
 
-. Show httpd process
+*4 Show httpd process*
+[source, text]
+----
+[root@rh8demo demo2]# pstree | grep http
 
-. Show webapp with curl
+[root@rh8demo demo2]# ps aux | grep http
+----
+
+*5 Show webapp with curl*
+[source, text]
+----
+# get the ip address of the pod
+[root@rh8demo demo2]# podman inspect myweb --format "IP Address: {{ .NetworkSettings.IPAddress }}"
+IP   Address:   10.88.0.37
+
+[root@rh8demo demo2]# curl http://10.88.0.37
+
+# Or very fancy
+[root@rh8demo demo2]# curl http://$(podman inspect myweb --format "{{ .NetworkSettings.IPAddress }}")
+
+----
+
+== Clean up
+
+*1 Stop container from running*
+[source, text]
+----
+[root@rh8demo demo2]# podman kill myweb
+c9017e41d9673caea3335fc4051ba859327d3205cc898e9145f0253c521b2d42
+----
+
+*2 Remove container from cache*
+[source, text]
+----
+[root@rh8demo demo2]# podman rm myweb
+c9017e41d9673caea3335fc4051ba859327d3205cc898e9145f0253c521b2d42
+----
+
+*3 Remove image from cache*
+----
+[root@rh8demo demo2]# podman rmi rha-myweb:latest
+06d1fc99c35d0aecf4f871f41d8d9f9e93d970e143bfad2e67f5cf5222456e15
+b627c79ae730228f1fa2783ea272ee2e8a478de118efaed1e9f4708271b49161
+b6d772ae1bd94a1ec6d9cedc7536cffe63f7a2648ea91653f6ba0cd184c40086
+c47086d1e7f702966d5ab091474860da093427c987e2587faa586d8c62d94689
+Untagged: localhost/rha-myweb:latest
+Deleted: ee67400f86bbe41b63a2c7513d4724afa86486f95127c43731678631040a62c2
+----
