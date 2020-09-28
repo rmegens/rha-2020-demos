@@ -1,0 +1,57 @@
+= Demo 3 - Webapp in Openshift
+
+This demo runs on a CodeReadyContainer All-In-One Openshift 4.4 cluster
+
+== Content
+
+[source,text]
+----
+[demo@demo RHA-2020]$ tree demo3/
+[demo@demo RHA-2020]$ tree demo3/
+demo3/
+├── files
+│   └── index.html
+└── README.md
+
+1 directory, 2 files
+----
+
+== Demo 3
+
+Web application on Openshift (CRC)
+1. Log into CRC as developer
+
+[source,text]
+----
+[demo@demo RHA-2020]$ oc login -u developer -p developer https://api.crc.testing:6443
+----
+
+. Create a project
+
+. Create the webapp using Github and S2I
+
+. Show the build process
+
+. Create a route to access the webpage from outside the cluster
+
+. Show the web-page in a webbrowser
+
+. Show running processes on the host
+
+. Show running processes in the pod
+```text
+[demo@demo RHA-2020]$ oc get pods
+NAME READY STATUS RESTARTS AGE
+my-webapps2i-1-build 0/1 Completed 0 28m
+my-webapps2i-1-deploy 0/1 Completed 0 27m
+my-webapps2i-1-p6xmx 1/1 Running 0 27m
+
+[demo@demo RHA-2020]$ oc rsh my-webapps2i-1-p6xmx
+sh-4.2$
+
+sh-4.2$ ps aux | grep httpd
+
+sh-4.2$ exit
+exit
+[demo@demo RHA-2020]$
+```
