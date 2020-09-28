@@ -1,14 +1,8 @@
 = Demo 1 - webapp on vm
 
-This demo runs on a simple RHEL7 VM -&gt; flanel
+This demo runs on a simple RHEL7 VM
 
-[source,text]
-----
-[demo@demo RHA-2020]$ ssh root@flanel
-
-----
-
-== Content
+== Content of demo1
 
 [source,text]
 ----
@@ -23,6 +17,50 @@ This demo runs on a simple RHEL7 VM -&gt; flanel
 
 2 directories, 4 files
 
+----
+
+
+== Demo
+
+Web application (the old way)
+1. Install, configure and run Apache2
+
+[source,text]
+----
+# Show no webserver is installed
+[root@flannel demo1]# yum list httpd
+[root@flannel demo1]# pstree
+[root@flannel demo1]# ps aux | grep http
+
+# install apache2
+[root@flannel demo1]# yum install httpd -y
+
+# enable and start httpd service
+[root@flannel demo1]# systemctl enable httpd
+[root@flannel demo1]# systemctl start httpd
+
+# open firewall
+[root@flannel demo1]# firewall-cmd --add-service=http --permanent
+[root@flannel demo1]# firewall-cmd --reload
+
+# copy index page
+cp ./files/index.html /var/www/html/index.html
+chmod 0664 /var/www/html/index.html
+----
+
+=== show results
+[source, text]
+----
+yum list httpd
+
+systemctl status httpd
+
+firewall-cmd --list-all
+
+curl http://localhost
+
+pstree
+ps aux | grep http
 ----
 
 == Set up script
@@ -44,34 +82,3 @@ To quickly uninstall the webserver
 cd ~/rha-2020/demo1
 [root@flannel demo1]# ./remove_web.sh
 ----
-
-== Demo
-
-Web application (the old way)
-1. Install, configure and run Apache2
-
-[source,text]
-----
-# install apache2
-[root@flannel demo1]# yum install httpd -y
-
-# enable and start httpd service
-[root@flannel demo1]# systemctl enable httpd
-[root@flannel demo1]# systemctl start httpd
-
-# open firewall
-[root@flannel demo1]# firewall-cmd --add-service=http --permanent
-[root@flannel demo1]# firewall-cmd --reload
-----
-
-. Create Index page (html)
-
-. Show web content with curl
-
-. Show httpd process 
-
-= show results
-
-systemctl status httpd
-firewall-cmd –list-all
-curl http://localhost
