@@ -5,7 +5,7 @@
 podman build -t myweb:v1 -f ./Dockerfile
 
 # run container with container image
-podman run -d --name mywebcontainer4 -p 8080:80 myweb:v1
+podman run -d --name mywebcontainer -p 8080:80 myweb:v1
 
 # check web page from local machine
 curl http://$(podman inspect mywebcontainer --format "{{ .NetworkSetting.IPAddress }}")
