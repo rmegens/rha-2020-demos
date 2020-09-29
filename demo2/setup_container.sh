@@ -8,7 +8,7 @@ podman build -t myweb:v1 -f ./Dockerfile
 podman run -d --name mywebcontainer -p 8080:80 myweb:v1
 
 # check web page from local machine
-curl http://$(podman inspect mywebcontainer --format "{{ .NetworkSetting.IPAddress }}")
+curl http://$(podman inspect mywebcontainer --format "{{ .NetworkSettings.IPAddress }}")
 
 # open firewall
 firewall-cmd --add-port=8080/tcp
