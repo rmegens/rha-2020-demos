@@ -6,13 +6,15 @@ This demo runs on a simple RHEL7 VM
 
 [source,text]
 ----
-[root@flannel rha-2020]# tree demo1/
+[root@demo1vm8 rha-2020-demos]# tree demo1/ -a
 demo1/
 ├── files
 │   └── index.html
 ├── README.adoc
 ├── remove_web.sh
 └── setup_web.sh
+
+1 directory, 4 files
 ----
 
 

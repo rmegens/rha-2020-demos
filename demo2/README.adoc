@@ -7,14 +7,18 @@ This demo runs on a simple RHEL8 VM
 
 [source,text]
 ----
-[root@rh8demo rha-2020]# tree demo2/
+[root@demo1vm8 rha-2020-demos]# tree demo2/ -a
 demo2/
 ├── Dockerfile
 ├── Dockerfile_alpine
 ├── files
 │   └── index.html
 ├── README.adoc
-└── setup_container.sh----
+├── remove_container.sh
+└── setup_container.sh
+
+1 directory, 6 files
+
 ----
 
 == Demo

@@ -9,12 +9,15 @@ https://developers.redhat.com/blog/2019/09/05/red-hat-openshift-4-on-your-laptop
 
 [source,text]
 ----
-[demo@demo RHA-2020]$ tree demo3/ -a
+[root@demo1vm8 rha-2020-demos]# tree demo3/ -a
 demo3/
 ├── files
 │   └── index.html
 ├── README.adoc
+├── remove_ocp_app.sh
 └── setup_ocp_app.sh
+
+1 directory, 4 files
 ----
 
 == Demo 3
