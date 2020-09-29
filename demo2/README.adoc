@@ -11,11 +11,10 @@ This demo runs on a simple RHEL8 VM
 demo2/
 ├── Dockerfile
 ├── Dockerfile_alpine
-└── files
-    ├── index.html
-    └── redhat.repo
-
-1 directory, 4 files
+├── files
+│   └── index.html
+├── README.adoc
+└── setup_container.sh----
 ----
 
 == Demo
