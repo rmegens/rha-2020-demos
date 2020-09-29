@@ -25,3 +25,4 @@ echo " oc get route"
 
 # using the result of oc get route to test the app in your browser
 echo " using the result of oc get route to test the app in your browser"
+echo
