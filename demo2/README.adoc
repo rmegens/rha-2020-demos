@@ -43,13 +43,13 @@ CMD     ["/usr/sbin/httpd","-D","FOREGROUND"]
 *2 Create an image from the Dockerfile using Podman*
 [source, text]
 ----
-[root@rh8demo demo2]# podman build -t rha-myweb:latest .
+[root@rh8demo demo2]# podman build -t rha-myweb:v1 -f ./Dockerfile
 ----
 
 *3 Create a container from the image using podman*
 [source, text]
 ----
-[root@rh8demo demo2]# podman run -d --name myweb rha-myweb
+[root@rh8demo demo2]# podman run -d --name mywebcontainer -p 8080:80 myweb:v1
 ----
 
 *4 Show httpd process*

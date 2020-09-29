@@ -13,7 +13,7 @@ firewall-cmd --add-service=http --permanent
 firewall-cmd --reload
 
 # copy index page
-cp ~/rha-2020-demos/demo1/files/index.html /var/www/html/index.html
+cp files/index.html /var/www/html/index.html
 chmod 0664 /var/www/html/index.html
 
 # show results
