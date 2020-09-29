@@ -11,6 +11,6 @@ podman run -d --name mywebcontainer -p 8080:80 myweb:v1
 curl http://$(podman inspect mywebcontainer --format "{{ .NetworkSettings.IPAddress }}")
 
 # open firewall
-firewall-cmd --add-port=8080/tcp
+firewall-cmd --add-port=8080/tcp --permanent && firewall-cmd --reload
 
 
